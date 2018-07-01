@@ -1,14 +1,17 @@
 version: '3'
 services:
   prometheus:
-    image: prometheus
+    build:
+      context: .
     ports:
       - "9090:9090"
     links:
       - random
 
   random:
-    image: random
+    build:
+      context: .
+      dockerfile: Dockerfile.random
     ports:
       - "8080:8080"
       - "8081:8081"
