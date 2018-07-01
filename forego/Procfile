@@ -1,0 +1,3 @@
+random1: /app/client_golang/examples/random/random -listen-address=:8080
+random2: /app/client_golang/examples/random/random -listen-address=:8081
+random3: /app/client_golang/examples/random/random -listen-address=:8082

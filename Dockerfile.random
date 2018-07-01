@@ -1,0 +1,17 @@
+FROM golang:alpine
+
+WORKDIR /app
+
+COPY forego/Procfile /app
+
+RUN apk update \
+    && apk add git wget ca-certificates bash \
+    && git clone https://github.com/prometheus/client_golang.git \ 
+    && cd client_golang/examples/random \
+    && go get -d \
+    && go build
+
+RUN wget https://bin.equinox.io/c/ekMN3bCZFUn/forego-stable-linux-amd64.tgz \
+    && tar xvfz forego-*.tgz
+
+CMD ["/app/forego", "start"]
